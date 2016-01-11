@@ -12,6 +12,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "uiframework": "^2.0.0",
-    "wrd-fuel-gauge": "^1.0.0"
+    "wrd-battery-gauge": "^2.0.0"
   }
 }

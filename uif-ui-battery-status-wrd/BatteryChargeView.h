@@ -18,7 +18,7 @@
 #ifndef __UIF_UI_BATTERY_CHARGE_VIEW_H__
 #define __UIF_UI_BATTERY_CHARGE_VIEW_H__
 
-#include "wrd-fuel-gauge/FuelGauge.h"
+#include "wrd-battery-gauge/BatteryGauge.h"
 
 #include "UIFramework/UIView.h"
 #include "UIFramework/UITextView.h"
@@ -38,7 +38,7 @@ class BatteryChargeView : public UIView
 public:
     /**
      * @brief UIView class for displaying the battery percentage.
-     * @details Uses wrd-fuel-gauge to read battery level.
+     * @details Uses wrd-battery-gauge to read battery level.
      *
      * @param FontData UIFramework font to display text in.
      */
@@ -48,13 +48,13 @@ public:
     {
         font = (_font == NULL) ? &Font_Menu : _font;
 
-        FuelGauge::setPerMilleChangeCallbackTask(this, &BatteryChargeView::updateImage);
-        updateImage(FuelGauge::getPerMille());
+        BatteryGauge::setPerMilleChangeCallbackTask(this, &BatteryChargeView::updateImage);
+        updateImage(BatteryGauge::getPerMille());
     }
 
     virtual ~BatteryChargeView(void)
     {
-        FuelGauge::cancelCallbackTask(this, &BatteryChargeView::updateImage);
+        BatteryGauge::cancelCallbackTask(this, &BatteryChargeView::updateImage);
     }
 
     /**

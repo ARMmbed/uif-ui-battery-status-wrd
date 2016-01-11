@@ -18,7 +18,7 @@
 #ifndef __UIF_UI_REMAINING_TIME_VIEW_H__
 #define __UIF_UI_REMAINING_TIME_VIEW_H__
 
-#include "wrd-fuel-gauge/FuelGauge.h"
+#include "wrd-battery-gauge/BatteryGauge.h"
 
 #include "UIFramework/UIView.h"
 #include "UIFramework/UITextView.h"
@@ -38,7 +38,7 @@ class RemainingTimeView : public UIView
 public:
     /**
      * @brief UIView class for displaying remaining battery life.
-     * @details Uses wrd-fuel-gauge to read battery level.
+     * @details Uses wrd-battery-gauge to read battery level.
      *
      * @param FontData UIFramework font to display text in.
      */
@@ -48,13 +48,13 @@ public:
     {
         font = (_font == NULL) ? &Font_Menu : _font;
 
-        FuelGauge::setPerMilleChangeCallbackTask(this, &RemainingTimeView::updateImage);
-        updateImage(FuelGauge::getPerMille());
+        BatteryGauge::setPerMilleChangeCallbackTask(this, &RemainingTimeView::updateImage);
+        updateImage(BatteryGauge::getPerMille());
     }
 
     virtual ~RemainingTimeView(void)
     {
-        FuelGauge::cancelCallbackTask(this, &RemainingTimeView::updateImage);
+        BatteryGauge::cancelCallbackTask(this, &RemainingTimeView::updateImage);
     }
 
     /**
@@ -98,8 +98,8 @@ private:
     {
         if (value >= 0)
         {
-            const uint32_t capacity = FuelGauge::getTotalCapacity();
-            const uint32_t current = FuelGauge::getAverageCurrent();
+            const uint32_t capacity = BatteryGauge::getTotalCapacity();
+            const uint32_t current = BatteryGauge::getAverageCurrent();
             const uint32_t hours = (uint32_t) value * capacity / 1000 / current; // value is in percent
 
             const char* format;
