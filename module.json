@@ -1,6 +1,6 @@
 {
   "name": "uif-ui-battery-status-wrd",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "description": "UIFramework battery status display in the Wearable Reference Design style.",
   "keywords": [],
   "author": "Marcus Chang <marcus.chang@arm.com>",
